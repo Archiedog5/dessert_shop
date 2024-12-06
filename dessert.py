@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 class DesserItems(ABC):
     def __init__(self,name):
         self.name = name
-        self.tax_precent=7.25
+        self.tax_precent=0.0725
 
     def __str__(self):
         return f"{self.name}"
@@ -16,7 +16,7 @@ class DesserItems(ABC):
 
     
     def calculate_tax(self):
-        tax=self.calculate_cost()*self.tax_precent* .01
+        tax=self.calculate_cost()*self.tax_precent
         return tax
 
 class Candy(DesserItems):

@@ -4,9 +4,26 @@ from dessert import(
     Cookie,
     IceCream,
     Sundae,
-    DesserItems
+
 
 ) 
+class DessertShop:
+
+    def __init__(self):
+        pass
+
+    def user_prompt_candy(self):
+        self.name=input('What is the name of the candy')
+    
+    def user_prompt_cookie(self):
+        pass
+
+    def user_prompt_icecream(self):
+        pass
+
+    def user_prompt_sundae(self):
+        pass
+
 
 class Order:
     def __init__(self):
@@ -36,7 +53,7 @@ class Order:
     
 
 def main():
-    list = []
+    list = [['Name','Item Cost','Tax']]
     order1 = Order()
     order1.add_item(Candy("Candy Corn", 1.5, .25))
     order1.add_item(Candy("Gummy Bears", .25, .35))
@@ -56,5 +73,6 @@ def main():
     list.append(['Order Total','',grand_total])
     list.append(['Total items in the order','',x])
     make_receipt(list, "receipt")
+    print(list)
 
 main()
