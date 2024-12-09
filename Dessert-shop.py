@@ -17,6 +17,7 @@ class Order:
         self.total=0
 
     def add(self, DesserItems):
+        # print(DesserItems)
         self.Order_list.append(DesserItems)
 
     def reper(self):
@@ -95,17 +96,18 @@ class DessertShop:
 def main():
     shop = DessertShop() 
     order = Order()
-    lst=[['Name',"Cost",'Tax']]
+    # lst=[['Name',"Cost",'Tax']]
+    lst = [['Name',"cost",'tax']]
     sub_total=0
     tax_total=0
     x=order.reper()
-
-    order.add(Candy('Candy Corn', 1.5, 0.25))
-    order.add(Candy('Gummy Bears', 0.25, 0.35))
-    order.add(Cookie('Chocolate Chip', 6, 3.99))
-    order.add(IceCream('Pistachio', 2, 0.79))
-    order.add(Sundae('Vanilla', 3, 0.69, 'Hot Fudge', 1.29))
-    order.add(Cookie('Oatmeal Raisin', 2, 3.45))
+    # print(Candy('Candy Corn', 1.5, 0.25))
+    # order.add(Candy('Candy Corn', 1.5, 0.25))
+    # order.add(Candy('Gummy Bears', 0.25, 0.35))
+    # order.add(Cookie('Chocolate Chip', 6, 3.99))
+    # order.add(IceCream('Pistachio', 2, 0.79))
+    # order.add(Sundae('Vanilla', 3, 0.69, 'Hot Fudge', 1.29))
+    # order.add(Cookie('Oatmeal Raisin', 2, 3.45))
 
     # boolean done = false
     done: bool = False
@@ -141,20 +143,31 @@ def main():
           print(f'{item.topping_name} {item.name} sundae has been added to your order.')
         case _:            
           print('Invalid response:  Please enter a choice from the menu (1-4) or Enter')
-    print()
+
 
     for item in order.Order_list:
-        lst.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
-        sub_total+=round(item.calculate_cost(),2)
-        tax_total+=item.calculate_tax()
+        # print("RAN")
+# 
+        print(f"This is the item: {item}")
+        # print(f"This is the Order_list: {order.Order_list}")
+        try:
+            # order.Order_list.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
+            lst.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
+            sub_total+=round(item.calculate_cost(),2)
+            tax_total+=item.calculate_tax()
+        except:
+            pass
+
     gimmy=round(tax_total,2)
     grand_total=sub_total+tax_total
     timmy=round(grand_total,2)
     x=order.reper()
     lst.append(['Order Subtotals', sub_total, gimmy])
-    lst.append(['Order Total','',timmy])
+    lst.append(['Order Total',timmy,''])
     lst.append(['Total items in the order','',x])
+
+    print("List: ", lst)
+    
     make_receipt(lst, "receipt")
-    print(lst)
 
 main()
