@@ -36,6 +36,13 @@ class Order:
         tax=self.total.calculate_tax()
         return tax
     
+    def __str__(self):
+        string = ""
+        for value in self.order:
+            string += value.name + "\n"
+
+        return string
+    
 class DessertShop:
 
     def __init__(self):
@@ -139,10 +146,13 @@ def main():
     for item in order.Order_list:
         lst.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
         sub_total+=round(item.calculate_cost(),2)
-        tax_total+=round(item.calculate_tax(),2)
+        tax_total+=item.calculate_tax()
+    gimmy=round(tax_total,2)
     grand_total=sub_total+tax_total
-    lst.append(['Order Subtotals', sub_total, tax_total])
-    lst.append(['Order Total','',grand_total])
+    timmy=round(grand_total,2)
+    x=order.reper()
+    lst.append(['Order Subtotals', sub_total, gimmy])
+    lst.append(['Order Total','',timmy])
     lst.append(['Total items in the order','',x])
     make_receipt(lst, "receipt")
     print(lst)

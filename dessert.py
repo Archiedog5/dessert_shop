@@ -5,8 +5,7 @@ from abc import ABC, abstractmethod
 class DesserItems(ABC):
     def __init__(self,name):
         self.name = name
-        self.tax_precent=0.0725
-
+        self.tax_precent=7.25
     def __str__(self):
         return f"{self.name}"
     
@@ -16,7 +15,7 @@ class DesserItems(ABC):
 
     
     def calculate_tax(self):
-        tax=self.calculate_cost()*self.tax_precent
+        tax=self.calculate_cost()*self.tax_precent*0.01
         return tax
 
 class Candy(DesserItems):
@@ -30,6 +29,9 @@ class Candy(DesserItems):
         cost = self.candy_weight*self.price_per_pound
         return cost
     
+    def __str__(self):
+        return f"{self.name}, {self.candy_weight}lbs, ${self.price_per_pound}/lbs, {self.calculate_cost()}, {self.calculate_tax()}"
+    
 class Cookie(DesserItems):
 
     def __init__(self, name, cookie_quantity, price_per_dozen):
@@ -41,6 +43,9 @@ class Cookie(DesserItems):
         cookie_dozen = self.cookie_quantity/12
         cost = cookie_dozen*self.price_per_dozen
         return cost
+    
+    def __str__(self):
+        return f"{self.name}, {self.cookie_quantity}cookies, ${self.price_per_dozen} per dozen, {self.calculate_cost()}, {self.calculate_tax()}"
 
 class IceCream(DesserItems):
     def __init__(self, name, scoop_count, price_per_scoop):
@@ -51,6 +56,9 @@ class IceCream(DesserItems):
     def calculate_cost(self):
         cost = self.scoop_count*self.price_per_scoop
         return cost
+    
+    def __str__(self):
+        return f"{self.name}, {self.scoop_count} scoops, ${self.price_per_scoop} per scoop, {self.calculate_cost()}, {self.calculate_tax()}"
 
 class Sundae(IceCream):
     def __init__(self, name, scoop_count, price_per_scoop, topping_name, topping_price):
@@ -62,4 +70,7 @@ class Sundae(IceCream):
         cost = self.scoop_count*self.price_per_scoop
         add_on= cost+self.topping_price
         return add_on
+    
+    def __str__(self):
+        return f"{self.name}, {self.scoop_count} scoops, ${self.price_per_scoop} per scoop, {self.topping_name}, {self.topping_price}, {self.calculate_cost()}, {self.calculate_tax()}"
     
