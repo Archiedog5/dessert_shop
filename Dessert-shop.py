@@ -97,7 +97,7 @@ def main():
     shop = DessertShop() 
     order = Order()
     # lst=[['Name',"Cost",'Tax']]
-    lst = [['Name',"cost",'tax']]
+    order.add(['Name',"cost",'tax'])
     sub_total=0
     tax_total=0
     x=order.reper()
@@ -150,24 +150,22 @@ def main():
 # 
         print(f"This is the item: {item}")
         # print(f"This is the Order_list: {order.Order_list}")
-        try:
-            # order.Order_list.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
-            lst.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
-            sub_total+=round(item.calculate_cost(),2)
-            tax_total+=item.calculate_tax()
-        except:
-            pass
+    
+        # order.Order_list.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
+        #lst.append([order.Order_list[item.name], round(order.Order_list[item.calculate_cost()],2), round(order.Order_list[item.calculate_tax()],2)])
+        sub_total+=round(item.calculate_cost(),2)
+        tax_total+=item.calculate_tax()
 
     gimmy=round(tax_total,2)
     grand_total=sub_total+tax_total
     timmy=round(grand_total,2)
     x=order.reper()
-    lst.append(['Order Subtotals', sub_total, gimmy])
-    lst.append(['Order Total',timmy,''])
-    lst.append(['Total items in the order','',x])
+    order.add(['Order Subtotals', sub_total, gimmy])
+    order.add(['Order Total',timmy,''])
+    order.add(['Total items in the order','',x])
 
-    print("List: ", lst)
+    print("List: ", order.Order_list)
     
-    make_receipt(lst, "receipt")
+    make_receipt(order.Order_list, "receipt")
 
 main()

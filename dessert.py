@@ -16,7 +16,8 @@ class DesserItems(ABC):
     
     def calculate_tax(self):
         tax=self.calculate_cost()*self.tax_precent*0.01
-        return tax
+        x=round(tax,2)
+        return x
 
 class Candy(DesserItems):
 
@@ -27,7 +28,8 @@ class Candy(DesserItems):
 
     def calculate_cost(self):
         cost = self.candy_weight*self.price_per_pound
-        return cost
+        x=round(cost,2)
+        return x
     
     def __str__(self):
         return f"{self.name}, {self.candy_weight}lbs, ${self.price_per_pound}/lbs, {self.calculate_cost()}, {self.calculate_tax()}"
@@ -42,7 +44,8 @@ class Cookie(DesserItems):
     def calculate_cost(self):
         cookie_dozen = self.cookie_quantity/12
         cost = cookie_dozen*self.price_per_dozen
-        return cost
+        x=round(cost,2)
+        return x
     
     def __str__(self):
         return f"{self.name}, {self.cookie_quantity}cookies, ${self.price_per_dozen} per dozen, {self.calculate_cost()}, {self.calculate_tax()}"
@@ -55,7 +58,8 @@ class IceCream(DesserItems):
 
     def calculate_cost(self):
         cost = self.scoop_count*self.price_per_scoop
-        return cost
+        x=round(cost,2)
+        return x
     
     def __str__(self):
         return f"{self.name}, {self.scoop_count} scoops, ${self.price_per_scoop} per scoop, {self.calculate_cost()}, {self.calculate_tax()}"
@@ -69,7 +73,8 @@ class Sundae(IceCream):
     def calculate_cost(self):
         cost = self.scoop_count*self.price_per_scoop
         add_on= cost+self.topping_price
-        return add_on
+        x=round(add_on,2)
+        return x
     
     def __str__(self):
         return f"{self.name}, {self.scoop_count} scoops, ${self.price_per_scoop} per scoop, {self.topping_name}, {self.topping_price}, {self.calculate_cost()}, {self.calculate_tax()}"
