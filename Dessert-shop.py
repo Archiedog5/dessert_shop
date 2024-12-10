@@ -101,13 +101,12 @@ def main():
     sub_total=0
     tax_total=0
     x=order.reper()
-    # print(Candy('Candy Corn', 1.5, 0.25))
-    # order.add(Candy('Candy Corn', 1.5, 0.25))
-    # order.add(Candy('Gummy Bears', 0.25, 0.35))
-    # order.add(Cookie('Chocolate Chip', 6, 3.99))
-    # order.add(IceCream('Pistachio', 2, 0.79))
-    # order.add(Sundae('Vanilla', 3, 0.69, 'Hot Fudge', 1.29))
-    # order.add(Cookie('Oatmeal Raisin', 2, 3.45))
+    order.add(Candy('Candy Corn', 1.5, 0.25))
+    order.add(Candy('Gummy Bears', 0.25, 0.35))
+    order.add(Cookie('Chocolate Chip', 6, 3.99))
+    order.add(IceCream('Pistachio', 2, 0.79))
+    order.add(Sundae('Vanilla', 3, 0.69, 'Hot Fudge', 1.29))
+    order.add(Cookie('Oatmeal Raisin', 2, 3.45))
 
     # boolean done = false
     done: bool = False
@@ -152,7 +151,7 @@ def main():
         # print(f"This is the Order_list: {order.Order_list}")
     
         # order.Order_list.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
-        lst.append([item.name, item.calculate_cost(), item.calculate_tax()])
+        lst.append([item.name + " (" + item.packaging + ")", round(item.calculate_cost(), 2), round(item.calculate_tax(), 2)])
         sub_total+=round(item.calculate_cost(),2)
         tax_total+=item.calculate_tax()
 
@@ -160,9 +159,9 @@ def main():
     grand_total=sub_total+tax_total
     timmy=round(grand_total,2)
     x=order.reper()
-    order.add(['Order Subtotals', sub_total, gimmy])
-    order.add(['Order Total',timmy,''])
-    order.add(['Total items in the order','',x])
+    lst.append(['Order Subtotals', sub_total, gimmy])
+    lst.append(['Order Total',timmy,''])
+    lst.append(['Total items in the order','',x])
 
     print("List: ", lst)
     
