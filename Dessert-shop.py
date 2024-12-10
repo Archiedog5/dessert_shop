@@ -96,8 +96,8 @@ class DessertShop:
 def main():
     shop = DessertShop() 
     order = Order()
-    # lst=[['Name',"Cost",'Tax']]
-    order.add(['Name',"cost",'tax'])
+    lst=[['Name',"Cost",'Tax']]
+    # order.add(['Name',"cost",'tax'])
     sub_total=0
     tax_total=0
     x=order.reper()
@@ -144,7 +144,7 @@ def main():
         case _:            
           print('Invalid response:  Please enter a choice from the menu (1-4) or Enter')
 
-
+    print(order.Order_list)
     for item in order.Order_list:
         # print("RAN")
 # 
@@ -152,7 +152,7 @@ def main():
         # print(f"This is the Order_list: {order.Order_list}")
     
         # order.Order_list.append([item.name, round(item.calculate_cost(),2), round(item.calculate_tax(),2)])
-        #lst.append([order.Order_list[item.name], round(order.Order_list[item.calculate_cost()],2), round(order.Order_list[item.calculate_tax()],2)])
+        lst.append([item.name, item.calculate_cost(), item.calculate_tax()])
         sub_total+=round(item.calculate_cost(),2)
         tax_total+=item.calculate_tax()
 
@@ -164,8 +164,8 @@ def main():
     order.add(['Order Total',timmy,''])
     order.add(['Total items in the order','',x])
 
-    print("List: ", order.Order_list)
+    print("List: ", lst)
     
-    make_receipt(order.Order_list, "receipt")
+    make_receipt(lst, "receipt")
 
 main()
