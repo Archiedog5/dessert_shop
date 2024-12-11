@@ -6,5 +6,5 @@ def test_Cookie():
     item3 = Cookie("Mint", 1, 4.50)
     assert item1.name == "Choclate chip"
     assert item2.cookie_quantity == 12
-    assert item3.price_per_dozen == 5.15
+    assert item3.price_per_dozen == 4.50
     assert item1.packaging == "Box"
